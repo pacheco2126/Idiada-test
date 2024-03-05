@@ -1,0 +1,67 @@
+button {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff5900;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4f3522 !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ng-trigger.ng-trigger-animation.ng-tns-c2-0.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-shadow.ng-star-inserted {
+  min-width: 500px !important;
+}
+
+th,
+td {
+  padding: 10px; 
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.button-container {
+  background-image: url('../../../../idada.webp'); 
+  background-size: 1200px 280px;
+  background-repeat: no-repeat; 
+  background-position: center; 
+  padding: 30px;
+}
+
+.filter-button {
+  margin-left: auto;
+  padding: 5px;
+  background-color: transparent;
+  color: #ff6f00; 
+  margin-left: auto !important;
+}
+
+.filter-button:hover {
+  background-color: #595959 !important; 
+}
+
+.actions-col {
+  display: flex;
+  justify-content: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog {
+
+  min-width: 500px;
+  min-height: 250;
+}

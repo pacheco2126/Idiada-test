@@ -1,0 +1,98 @@
+<p-dialog [(visible)]="showAdd" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="9003" [closable]="true" [draggable]="false" [resizable]="false">
+  <app-add (vehicleAdded)="onVehicleAdded()"></app-add>
+</p-dialog>
+<p-messages [(value)]="msgsAdded"></p-messages>
+
+<p-dialog [(visible)]="showEdit" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="9003" [closable]="true" [draggable]="false" [resizable]="false">
+  <app-edit [vehicle]="vehicle" (vehicleUpdated)="onVehicleUpdated()"></app-edit>
+  <p-messages [(value)]="msgsEdited" ></p-messages>
+</p-dialog>
+
+<p-dialog [(visible)]="showCloneDialog" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="9003" [closable]="false" [draggable]="false" [resizable]="false">
+  <div class="p-field">
+    <label for="newPlate">Enter a new plate number:</label>
+    <input id="newPlate" type="text" pInputText [(ngModel)]="newPlateNumber">
+  </div>
+  <button type="button" pButton label="Clone" (click)="cloneVehicleWithNewPlate()"></button>
+  <button type="button" pButton label="Cancel" (click)="cancelClone()"></button>
+</p-dialog>
+
+<p-dialog [(visible)]="showDeleteDialog" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="9003" [closable]="false" [draggable]="false" [resizable]="false">
+  <div class="p-field">
+    <label for="deletePlate">Are you sure you want to delete this vehicle?</label>
+  </div>
+  <button type="button" pButton label="Yes" (click)="deleteVehicleConfirmed()"></button>
+  <button type="button" pButton label="No" (click)="cancelDelete()"></button>
+</p-dialog>
+
+<div class="container">
+  <div class="button-container">
+    <button type="button" pButton class="ui-button-raised" label="New" title="Create a new Vehicle"
+      (click)="addVehicle()"></button>
+  </div>
+
+  <p-card title="Vehicles">
+    <p-table #ptable [value]="vehicleList" [paginator]="false" [lazy]="true" [responsive]="true" [scrollable]="true"
+      sortField="id" [sortOrder]="1">
+
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>
+            <div class="header-content">
+              <span>ID</span>
+              <button type="button" pButton class="ui-button-raised filter-button" label="Lo-Hi" icon="pi pi-filter"
+                title="Filter by ID Lo-Hi" (click)="sortVehiclesById()"></button>
+            </div>
+          </th>
+          <th>
+            <div class="header-content">
+              <span>Plate</span>
+              <button type="button" pButton class="ui-button-raised filter-button" label="Age" icon="pi pi-filter"
+                title="Filter by Age Lo-Hi" (click)="sortVehiclesByPlate()"></button>
+            </div>
+          </th>
+          <th>
+            <div class="header-content">
+              <span>Manufacturer</span>
+              <button type="button" pButton class="ui-button-raised filter-button" label="A-Z" icon="pi pi-filter"
+                title="Filter by Name A-Z" (click)="sortVehiclesByManufacturer()"></button>
+            </div>
+          </th>
+          <th>
+            <div class="header-content">
+              <span>Make</span>
+              <button type="button" pButton class="ui-button-raised filter-button" label="A-Z" icon="pi pi-filter"
+                title="Filter by Name A-Z" (click)="sortVehiclesByMake()"></button>
+            </div>
+          </th>
+          <th>
+            <div class="header-content">
+              <span>Commercial Name</span>
+              <button type="button" pButton class="ui-button-raised filter-button" label="A-Z" icon="pi pi-filter"
+                title="Filter by Name A-Z" (click)="sortVehiclesByCommercialName()"></button>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-rowData>
+        <tr [pSelectableRow]="rowData">
+          <td>{{rowData.id}}</td>
+          <td>{{rowData.plate}}</td>
+          <td>{{rowData.manufacturer}}</td>
+          <td>{{rowData.make}}</td>
+          <td>{{rowData.commercialName}}</td>
+          <td class="actions-col">
+            <button type="button" pButton class="ui-button-raised" icon="pi pi-pencil" title="Edit"
+              (click)="editVehicle(rowData)"></button>
+            <button type="button" pButton class="ui-button-raised" icon="pi pi-clone" title="Clone"
+              (click)="cloneVehicle(rowData)"></button>
+            <button type="button" pButton class="ui-button-raised" icon="pi pi-trash" title="Delete"
+              (click)="deleteVehicle(rowData)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>

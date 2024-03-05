@@ -1,0 +1,32 @@
+<body>
+  <div class="edit-vehicle-form">
+    <h2>Edit the Vehicle</h2>
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="plate">Plate Number:</label>
+        <input type="text" formControlName="plate" id="plate" [value]="vehicle?.plate" readonly>
+      </div>
+      <div class="form-group">
+        <label for="manufacturer">Manufacturer:</label>
+        <input type="text" formControlName="manufacturer" id="manufacturer" [value]="vehicle?.manufacturer">
+      </div>
+      <div class="form-group">
+        <label for="make">Make:</label>
+        <input type="text" formControlName="make" id="make" [value]="vehicle?.make">
+      </div>
+      <div class="form-group">
+        <label for="commercialName">Commercial Name:</label>
+        <input type="text" formControlName="commercialName" id="commercialName" [value]="vehicle?.commercialName">
+      </div>
+      <div class="form-group">
+        <label for="vinNumber">VIN Number:</label>
+        <input type="text" formControlName="vinNumber" id="vinNumber" [value]="vehicle?.vinNumber" >
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input type="number" formControlName="capacity" id="capacity" [value]="vehicle?.capacity">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
