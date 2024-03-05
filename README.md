@@ -1,4 +1,4 @@
-div align="center">
+<div align="center">
 <img src="idiada.png" height="90px" width="auto" /> 
 <h2>Technical test for Idiada</h2>
 </div>
